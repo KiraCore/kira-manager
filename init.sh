@@ -1,4 +1,4 @@
 #!/bin/bash
 
-echo &BRANCH
+echo "Arguments received $@"
 
