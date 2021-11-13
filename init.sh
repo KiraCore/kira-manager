@@ -1,4 +1,4 @@
 #!/bin/bash
 
-#INPUT BOX | BRANCH
+echo "Got in script"
 
