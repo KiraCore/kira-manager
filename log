@@ -1,0 +1,16 @@
+sudo 
+apt-get 
+docker_gpg curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg <<< asdfasd
+docker_set_stable echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg]                                      https://download.docker.com/linux/ubuntu focal stable' | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null <<< asdfasd
+golang_wget wget https://dl.google.com/go/go1.15.11.linux-.tar.gz
+update sudo apt get update -y <<< asdfasd
+docker_remove sudo apt-get remove docker docker-engine docker.io containerd runc -y <<< asdfasd
+docker_depend sudo apt-get install ca-certificates curl gnupg lsb-release -y <<< asdfasd
+golang_tar tar -C /usr/local -xvf go1.15.11.linux-.tar.gz
+docker_gpg curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg <<< asdfsadf
+docker_set_stable echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg]                                      https://download.docker.com/linux/ubuntu focal stable' | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null <<< asdfsadf
+golang_wget wget https://dl.google.com/go/go1.15.11.linux-.tar.gz
+update sudo apt get update -y <<< asdfsadf
+docker_remove sudo apt-get remove docker docker-engine docker.io containerd runc -y <<< asdfsadf
+docker_depend sudo apt-get install ca-certificates curl gnupg lsb-release -y <<< asdfsadf
+golang_tar tar -C /usr/local -xvf go1.15.11.linux-.tar.gz
