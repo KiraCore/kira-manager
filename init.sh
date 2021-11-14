@@ -43,12 +43,12 @@ ESSENTIALS_NAMES[7]="Installing docker..."
 declare -A ESSENTIALS
 ESSENTIALS[0]="sudo -S <<< \"$PSWD\" apt-get update -y >> log"
 ESSENTIALS[1]="wget https://dl.google.com/go/go$GO_VERSION.linux-$GOLANG_ARCH.tar.gz >> log" 
-ESSENTIALS[2]="sudo -S -k <<< \"$PSWD\" tar -C /usr/local -xvf go$GO_VERSION.linux-$GOLANG_ARCH.tar.gz >> log"
-ESSENTIALS[3]="sudo -S -k <<< \"$PSWD\" apt-get remove docker docker-engine docker.io containerd runc -y >> log"
-ESSENTIALS[4]="sudo -S -k <<< \"$PSWD\" apt-get install ca-certificates curl gnupg lsb-release -y >> log"
-ESSENTIALS[5]="curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo -S -k <<< \"$PSWD\" gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg >> log"
-ESSENTIALS[6]="sudo -S -k <<< \"$PSWD\" tee /etc/apt/sources.list.d/docker.list <<< 'deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu focal stable'"
-ESSENTIALS[7]="sudo -S -k <<< \"$PSWD\" apt-get install docker-ce docker-ce-cli containerd.io"
+ESSENTIALS[2]="sudo -S <<< \"$PSWD\" tar -C /usr/local -xvf go$GO_VERSION.linux-$GOLANG_ARCH.tar.gz >> log"
+ESSENTIALS[3]="sudo -S <<< \"$PSWD\" apt-get remove docker docker-engine docker.io containerd runc -y >> log"
+ESSENTIALS[4]="sudo -S <<< \"$PSWD\" apt-get install ca-certificates curl gnupg lsb-release -y >> log"
+ESSENTIALS[5]="curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo -S <<< \"$PSWD\" gpg --dearmor -o /usr/share/keyrings/docker-archiveyring.gpg >> log"
+ESSENTIALS[6]="sudo -S <<< \"$PSWD\" tee /etc/apt/sources.list.d/docker.list <<< 'deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archiveyring.gpg] https://download.docker.com/linux/ubuntu focal stable'"
+ESSENTIALS[7]="sudo -S <<< \"$PSWD\" apt-get install docker-ce docker-ce-cli containerd.io"
 
 ESSENTIALS_LEN=${#ESSENTIALS[@]}
 
@@ -56,7 +56,10 @@ ESSENTIALS_LEN=${#ESSENTIALS[@]}
     for (( i=0; i<${ESSENTIALS_LEN}; i++ )) ; do
 
         COUNTER=$((100/$ESSENTIALS_LEN*$i)) 
-        echo -e "XXX\n$COUNTER\\${ESSENTIALS_NAMES[$i]}\nXXX"
+        echo "XXX"
+        echo "$COUNTER"
+        echo "${ESSENTIALS_NAMES[$i]}"
+        echo "XXX"
         echo "${ESSENTIALS[$i]}" >> log 
         eval $(echo "${ESSENTIALS[$i]}") &>eval.log
 
