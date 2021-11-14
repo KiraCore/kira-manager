@@ -36,7 +36,7 @@ ESSENTIALS_NAMES[6]="docker_set_stable"
 declare -A ESSENTIALS
 ESSENTIALS[0]="sudo apt get update -y <<< $PSWD"
 ESSENTIALS[1]="wget https://dl.google.com/go/go$GO_VERSION.linux-$GOLANG_ARCH.tar.gz" 
-ESSENTIALS[2]="tar -C /usr/local -xvf go$GO_VERSION.linux-$GOLANG_ARCH.tar.gz"
+ESSENTIALS[2]="sudo tar -C /usr/local -xvf go$GO_VERSION.linux-$GOLANG_ARCH.tar.gz"
 ESSENTIALS[3]="sudo apt-get remove docker docker-engine docker.io containerd runc -y <<< $PSWD"
 ESSENTIALS[4]="sudo apt-get install ca-certificates curl gnupg lsb-release -y <<< $PSWD"
 ESSENTIALS[5]="curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg <<< $PSWD"
