@@ -42,7 +42,7 @@ ESSENTIALS[2]="sudo -S <<< $PSWD tar -C /usr/local -xvf go$GO_VERSION.linux-$GOL
 ESSENTIALS[3]="sudo -S <<< $PSWD apt-get remove docker docker-engine docker.io containerd runc -y"
 ESSENTIALS[4]="sudo -S <<< $PSWD apt-get install ca-certificates curl gnupg lsb-release -y"
 ESSENTIALS[5]="curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg"
-ESSENTIALS[6]="sudo -S -s <<< $PSWD eval 'echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu focal stable''; tee /etc/apt/sources.list.d/docker.list"
+ESSENTIALS[6]="sudo -S -s <<< $PSWD \"echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu focal stable'; tee /etc/apt/sources.list.d/docker.list\""
 
 ESSENTIALS_LEN=${#ESSENTIALS[@]}
 
