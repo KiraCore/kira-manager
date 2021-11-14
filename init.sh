@@ -45,7 +45,7 @@ ESSENTIALS_LEN=${#ESSENTIALS[@]}
         COUNTER=$((100/$ESSENTIALS_LEN*$i)) 
         echo "$COUNTER"
         echo "${ESSENTIALS[$i]}" >> log 
-        eval "${ESSENTIALS[$i]}"
+        eval $(echo "${ESSENTIALS[$i]}")
 
     done 
 
