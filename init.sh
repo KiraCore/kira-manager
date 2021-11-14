@@ -36,13 +36,13 @@ ESSENTIALS_NAMES[5]="docker_gpg"
 ESSENTIALS_NAMES[6]="docker_set_stable"
 
 declare -A ESSENTIALS
-ESSENTIALS[0]="sudo -Svk apt get update -y <<< $PSWD"
+ESSENTIALS[0]="sudo -S -k -v <<< $PSWD apt get update -y"
 ESSENTIALS[1]="wget https://dl.google.com/go/go$GO_VERSION.linux-$GOLANG_ARCH.tar.gz" 
-ESSENTIALS[2]="sudo -Svk tar -C /usr/local -xvf go$GO_VERSION.linux-$GOLANG_ARCH.tar.gz"
-ESSENTIALS[3]="sudo -Svk apt-get remove docker docker-engine docker.io containerd runc -y <<< $PSWD"
-ESSENTIALS[4]="sudo -Svk apt-get install ca-certificates curl gnupg lsb-release -y <<< $PSWD"
-ESSENTIALS[5]="curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg <<< $PSWD"
-ESSENTIALS[6]="echo 'deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable' | sudo -Svk tee /etc/apt/sources.list.d/docker.list <<< $PSWD"
+ESSENTIALS[2]="sudo -S -k -v <<< $PSWD tar -C /usr/local -xvf go$GO_VERSION.linux-$GOLANG_ARCH.tar.gz"
+ESSENTIALS[3]="sudo -S -k -v <<< $PSWD apt-get remove docker docker-engine docker.io containerd runc -y"
+ESSENTIALS[4]="sudo -S -k -v <<< $PSWD apt-get install ca-certificates curl gnupg lsb-release -y"
+ESSENTIALS[5]="curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg"
+ESSENTIALS[6]="echo 'deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable' | sudo -S -k -v <<< $PSWD tee /etc/apt/sources.list.d/docker.list"
 
 ESSENTIALS_LEN=${#ESSENTIALS[@]}
 
