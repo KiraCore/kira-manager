@@ -65,6 +65,14 @@ ESSENTIALS_LEN=${#ESSENTIALS[@]}
         echo "${ESSENTIALS[$i]}" >> log 
         eval $(echo "${ESSENTIALS[$i]}") &>eval.log
 
+        ##[NOT TESTED]##
+        #if [[ $? != 0 ]]; then
+        #    whiptail --title "KM2.0 Setup" --msgbox "Installation of essentials faield..." 10 60
+        #    echo "${ESSENTIALS[$i]}"
+        #    break
+        #    exit 1
+        #fi
+
     done 
 
 } | whiptail --title 'KM2.0 Setup' --gauge "Installing essentials..." 6 50 0
