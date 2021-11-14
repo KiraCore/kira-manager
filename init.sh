@@ -6,6 +6,11 @@ GOPATH="/home/go"
 GOCACHE="/home/go/cache"
 GOBIN="${GOROOT}/bin"
 ARCHITECTURE=$(uname -m)
+if [[ "${ARCHITECTURE,,}" == *"arm"* ]] || [[ "${ARCHITECTURE,,}" == *"aarch"* ]] ; then
+    GOLANG_ARCH="arm64"
+else
+    GOLANG_ARCH="amd64"
+fi
 
 while true; do
 PSWD="$(whiptail --title 'KM2.0 Setup' --passwordbox 'Enter your root password to continue installation.' 10 60 3>&1 1>&2 2>&3)"
