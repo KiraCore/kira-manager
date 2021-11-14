@@ -36,9 +36,10 @@ ESSENTIALS_NAMES[1]="Downloading golang..."
 ESSENTIALS_NAMES[2]="Unpacking golang..."
 ESSENTIALS_NAMES[3]="Removing old docker packges..."
 ESSENTIALS_NAMES[4]="Installing docker dependencies..."
-ESSENTIALS_NAMES[5]="Handling gpg..."
-ESSENTIALS_NAMES[6]="Seting docker repo..."
-ESSENTIALS_NAMES[7]="Installing docker..."
+ESSENTIALS_NAMES[5]="Copying gpg..."
+ESSENTIALS_NAMES[6]="Setting gpg permissions..."
+ESSENTIALS_NAMES[7]="Seting docker repo..."
+ESSENTIALS_NAMES[8]="Installing docker..."
 
 declare -A ESSENTIALS
 ESSENTIALS[0]="sudo -S <<< \"$PSWD\" apt-get update -y >> log"
@@ -47,8 +48,9 @@ ESSENTIALS[2]="sudo -S <<< \"$PSWD\" tar -C /usr/local -xvf go$GO_VERSION.linux-
 ESSENTIALS[3]="sudo -S <<< \"$PSWD\" apt-get remove docker docker-engine docker.io containerd runc -y >> log"
 ESSENTIALS[4]="sudo -S <<< \"$PSWD\" apt-get install ca-certificates curl gnupg lsb-release -y >> log"
 ESSENTIALS[5]="curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo -S <<< \"$PSWD\" gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg >> log"
-ESSENTIALS[6]="sudo -S <<< \"$PSWD\" tee /etc/apt/sources.list.d/docker.list <<< 'deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu focal stable'"
-ESSENTIALS[7]="sudo -S <<< \"$PSWD\" apt-get install docker-ce docker-ce-cli containerd.io -y >> log"
+ESSENTIALS[6]="sudo -S <<< \"$PSWD\" chmod a+r /usr/share/keyrings/docker-archive-keyring.gpg"
+ESSENTIALS[7]="sudo -S <<< \"$PSWD\" tee /etc/apt/sources.list.d/docker.list <<< 'deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu focal stable'"
+ESSENTIALS[8]="sudo -S <<< \"$PSWD\" apt-get install docker-ce docker-ce-cli containerd.io -y >> log"
 
 ESSENTIALS_LEN=${#ESSENTIALS[@]}
 
