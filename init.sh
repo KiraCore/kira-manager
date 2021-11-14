@@ -36,7 +36,7 @@ ESSENTIALS_NAMES[5]="docker_gpg"
 ESSENTIALS_NAMES[6]="docker_set_stable"
 
 declare -A ESSENTIALS
-ESSENTIALS[0]="sudo -S <<< $PSWD apt get update -y"
+ESSENTIALS[0]="sudo -S <<< $PSWD apt-get update -y"
 ESSENTIALS[1]="wget https://dl.google.com/go/go$GO_VERSION.linux-$GOLANG_ARCH.tar.gz" 
 ESSENTIALS[2]="sudo -S <<< $PSWD tar -C /usr/local -xvf go$GO_VERSION.linux-$GOLANG_ARCH.tar.gz"
 ESSENTIALS[3]="sudo -S <<< $PSWD apt-get remove docker docker-engine docker.io containerd runc -y"
