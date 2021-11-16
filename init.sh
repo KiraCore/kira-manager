@@ -3,9 +3,9 @@
 #To avoid password leakage
 export HISTIGNORE='*sudo -S*'
 
-if [[ "$whoami" =="root" ]]; then
+WHOAMI="$(whoami)"
+if [[ $WHOAMI == "root" ]]; then
     whiptail --title "KM2.0 Setup" --msgbox "Plesase create a sudo user first. You can't proceed as root." 10 60
-    sleep 5
     exit 1
 fi
 
@@ -67,16 +67,13 @@ ESSENTIALS_LEN=${#ESSENTIALS[@]}
     for (( i=0; i<${ESSENTIALS_LEN}; i++ )) ; do
 
         COUNTER=$((100/$ESSENTIALS_LEN*$i)) 
-        echo "XXX"
-        echo "$COUNTER"
-        echo "${ESSENTIALS_OPERATIONS[$i]}[...]"
-        echo "XXX"
+        echo -e "XXX\n$COUNTER\n${ESSENTIALS_OPERATIONS[$i]}[..]\nXXX"
+        #echo "$COUNTER"
+        #echo "${ESSENTIALS_OPERATIONS[$i]}[...]"
+        #echo "XXX"
         echo "${ESSENTIALS[$i]}" >> log 
         eval $(echo "${ESSENTIALS[$i]}") &>eval.log
-        echo "XXX"
-        echo "$COUNTER"
-        echo "${ESSENTIALS_OPERATIONS[$i]}[OK]"
-        echo "XXX"
+        echo -e "XXX\n$COUNTER\n${ESSENTIALS_OPERATIONS[$i]}[OK]\nXXX"
 
         ##[NOT TESTED]##
         #if [[ $? != 0 ]]; then
