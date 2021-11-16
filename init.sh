@@ -39,27 +39,11 @@ declare -A ESSENTIALS_OPERATIONS
 ESSENTIALS_OPERATIONS[0]="Updating packages..."
 ESSENTIALS_OPERATIONS[1]="Downloading golang..."
 ESSENTIALS_OPERATIONS[2]="Unpacking golang..."
-ESSENTIALS_OPERATIONS[3]="Setting golang vairables"
-
-#ESSENTIALS_OPERATIONS[3]="Removing old docker packges..."
-#ESSENTIALS_OPERATIONS[4]="Installing docker dependencies..."
-#ESSENTIALS_OPERATIONS[5]="Copying gpg..."
-#ESSENTIALS_OPERATIONS[6]="Setting gpg permissions..."
-#ESSENTIALS_OPERATIONS[7]="Seting docker repo..."
-#ESSENTIALS_OPERATIONS[8]="Installing docker..."
 
 declare -A ESSENTIALS
 ESSENTIALS[0]="sudo -S <<< \"$PSWD\" apt-get update -y >> log"
 ESSENTIALS[1]="wget https://dl.google.com/go/go$GO_VERSION.linux-$GOLANG_ARCH.tar.gz >> log" 
 ESSENTIALS[2]="sudo -S <<< \"$PSWD\" tar -C /usr/local -xvf go$GO_VERSION.linux-$GOLANG_ARCH.tar.gz >> log"
-ESSENTIALS[3]="for v in '${!GO_VARS[@]}'; export ${GO_VARS[$v]} do"
-
-#ESSENTIALS[3]="sudo -S <<< \"$PSWD\" apt-get remove docker docker-engine docker.io containerd runc -y >> log"
-#ESSENTIALS[4]="sudo -S <<< \"$PSWD\" apt-get install ca-certificates curl gnupg lsb-release -y >> log"
-#ESSENTIALS[5]="curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo -S <<< \"$PSWD\" apt-key add - >> log"
-#ESSENTIALS[6]="sudo -S <<< \"$PSWD\" chmod a+r /usr/share/keyrings/docker-archive-keyring.gpg"
-#ESSENTIALS[7]="sudo -S <<< \"$PSWD\" tee /etc/apt/sources.list.d/docker.list <<< 'deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu focal stable'"
-#ESSENTIALS[8]="sudo -S <<< \"$PSWD\" apt-get install docker containerd docker.io runc -y >> log"
 
 ESSENTIALS_LEN=${#ESSENTIALS[@]}
 
@@ -67,22 +51,16 @@ ESSENTIALS_LEN=${#ESSENTIALS[@]}
     for (( i=0; i<${ESSENTIALS_LEN}; i++ )) ; do
 
         COUNTER=$((100/$ESSENTIALS_LEN*$i)) 
-        echo -e "XXX\n$COUNTER\n${ESSENTIALS_OPERATIONS[$i]}[..]\nXXX"
-        #echo "$COUNTER"
-        #echo "${ESSENTIALS_OPERATIONS[$i]}[...]"
-        #echo "XXX"
+        echo -e "XXX\n$COUNTER\n${ESSENTIALS_OPERATIONS[$i]}\nXXX"
         echo "${ESSENTIALS[$i]}" >> log 
         eval $(echo "${ESSENTIALS[$i]}") &>eval.log
-        echo -e "XXX\n$COUNTER\n${ESSENTIALS_OPERATIONS[$i]}[OK]\nXXX"
-
         ##[NOT TESTED]##
-        #if [[ $? != 0 ]]; then
-        #    whiptail --title "KM2.0 Setup" --msgbox "Installation of essentials faield..." 10 60
-        #    echo "${ESSENTIALS[$i]}"
-        #    break
-        #    exit 1
-        #fi
-
+        if [[ $? != 0 ]]; then
+            whiptail --title "KM2.0 Setup" --msgbox "Installation of essentials faield..." 10 60
+            echo "${ESSENTIALS[$i]}"
+            break
+            exit 1
+        fi
     done 
 
 } | whiptail --title 'KM2.0 Setup' --gauge "Installing essentials..." 6 50 0
