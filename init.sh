@@ -14,6 +14,7 @@ GOROOT="/usr/local/go"
 GOPATH="/home/go"
 GOCACHE="/home/go/cache"
 GOBIN="${GOROOT}/bin"
+GO="${GOBIN}/go"
 ARCHITECTURE=$(uname -m)
 
 
@@ -64,4 +65,3 @@ ESSENTIALS_LEN=${#ESSENTIALS[@]}
     done 
 
 } | whiptail --title 'KM2.0 Setup' --gauge "Installing essentials..." 6 50 0
-
