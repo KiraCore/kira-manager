@@ -67,3 +67,8 @@ ESSENTIALS_LEN=${#ESSENTIALS[@]}
     done 
 
 } | whiptail --title 'KM2.0 Setup' --gauge "Installing essentials..." 6 50 0
+##testing init.go
+git clone https://github.com/KiraCore/kira-manager.git
+cd kira-manager
+git checkout feature/init_golang
+/usr/local/go/bin/go run init.go
