@@ -40,11 +40,13 @@ declare -A ESSENTIALS_OPERATIONS
 ESSENTIALS_OPERATIONS[0]="Updating packages..."
 ESSENTIALS_OPERATIONS[1]="Downloading golang..."
 ESSENTIALS_OPERATIONS[2]="Unpacking golang..."
+ESSENTIALS_OPERATIONS[3]="Installing git..."
 
 declare -A ESSENTIALS
 ESSENTIALS[0]="sudo -S <<< \"$PSWD\" apt-get update -y >> log"
 ESSENTIALS[1]="wget https://dl.google.com/go/go$GO_VERSION.linux-$GOLANG_ARCH.tar.gz >> log" 
 ESSENTIALS[2]="sudo -S <<< \"$PSWD\" tar -C /usr/local -xvf go$GO_VERSION.linux-$GOLANG_ARCH.tar.gz >> log"
+ESSENTIALS[3]="sudo -S <<< \"$PSWD\" apt-get install git -y >> log"
 
 ESSENTIALS_LEN=${#ESSENTIALS[@]}
 
