@@ -2,6 +2,11 @@ package main
 
 import "fmt"
 
+//pass arg?
+//use from diff namespace?
+//strat from the init.sh?
+//start form the go
+
 type Unit struct {
 	Description  string
 	After        string
