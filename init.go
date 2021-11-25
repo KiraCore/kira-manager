@@ -53,23 +53,23 @@ func InstallDocker() (err error) {
 	add_gpg.Wait()
 	io.Copy(os.Stdout, &buff)
 
-	add_repo := exec.Command("add-apt-repository", "\"deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable\"")
+	add_repo := exec.Command("add-apt-repository", "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable")
 	if err = add_repo.Run(); err != nil {
 		log.Fatalln("Failed to add docker repositoriy ", err)
 	}
 	//upd = upd.Run()
 	if err = upd.Run(); err != nil {
-		log.Fatalln("Failed to update")
+		log.Fatalln("Failed to update 2nd")
 	}
 
 	apt_cache := exec.Command("apt-cache", "policy", "docker-ce", "-y")
 	if err = apt_cache.Run(); err != nil {
-		log.Fatalln("Failed to update")
+		log.Fatalln("Failed to update apt-cahe")
 	}
 
-	install_docker := exec.Command("apt", "install", "docker-ce", "-y")
+	install_docker := exec.Command("apt-get", "install", "docker-ce", "-y")
 	if err = install_docker.Run(); err != nil {
-		log.Fatalln("Failed to update")
+		log.Fatalln("Failed to update docker-ce")
 	}
 	return err
 }
