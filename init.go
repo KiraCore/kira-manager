@@ -31,8 +31,8 @@ func InstallDocker() (err error) {
 	//Idea: args with exec.Command add to struct. Wrap execution of exec.Command to add counter. Counter can be used as a gauge in whiptail.
 	var buff bytes.Buffer
 
-	upd := exec.Command("apt-get", "update", "-y")
-	if err = upd.Run(); err != nil {
+	upd1 := exec.Command("apt-get", "update", "-y")
+	if err = upd1.Run(); err != nil {
 		log.Fatalln("Failed to update")
 	}
 
@@ -57,8 +57,9 @@ func InstallDocker() (err error) {
 	if err = add_repo.Run(); err != nil {
 		log.Fatalln("Failed to add docker repositoriy ", err)
 	}
-	//upd = upd.Run()
-	if err = upd.Run(); err != nil {
+
+	upd2 := exec.Command("apt-get", "update", "-y")
+	if err = upd2.Run(); err != nil {
 		log.Fatalln("Failed to update 2nd")
 	}
 
