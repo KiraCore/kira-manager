@@ -12,6 +12,7 @@ import (
 const (
 	KM_VERSION string = "KM2.0.0"
 )
+
 /*
 type Menu struct{
 }
@@ -55,18 +56,18 @@ func InstallDocker() (err error) {
 	add_repo := exec.Command("add-apt-repository", "\"deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable\"")
 	if err = add_repo.Run(); err != nil {
 		log.Fatalln("Failed to add docker repositoriy")
-	
-	upd = upd.Run()
+	}
+	//upd = upd.Run()
 	if err = upd.Run(); err != nil {
 		log.Fatalln("Failed to update")
 	}
 
-	apt_cache:= exec.Command("apt-cache", "policy", "docker-ce","-y")
+	apt_cache := exec.Command("apt-cache", "policy", "docker-ce", "-y")
 	if err = apt_cache.Run(); err != nil {
 		log.Fatalln("Failed to update")
 	}
 
-	install_docker:=exec.Command("apt","install", "docker-ce","-y")
+	install_docker := exec.Command("apt", "install", "docker-ce", "-y")
 	if err = install_docker.Run(); err != nil {
 		log.Fatalln("Failed to update")
 	}
