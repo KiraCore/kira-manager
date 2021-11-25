@@ -63,7 +63,7 @@ func InstallDocker() (err error) {
 		log.Fatalln("Failed to update 2nd")
 	}
 
-	apt_cache := exec.Command("apt-cache", "policy", "docker-ce", "-y")
+	apt_cache := exec.Command("apt-cache", "policy", "docker-ce")
 	if err = apt_cache.Run(); err != nil {
 		log.Fatalln("Failed to update apt-cahe")
 	}
