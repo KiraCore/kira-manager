@@ -55,7 +55,7 @@ func InstallDocker() (err error) {
 
 	add_repo := exec.Command("add-apt-repository", "\"deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable\"")
 	if err = add_repo.Run(); err != nil {
-		log.Fatalln("Failed to add docker repositoriy")
+		log.Fatalln("Failed to add docker repositoriy ", err)
 	}
 	//upd = upd.Run()
 	if err = upd.Run(); err != nil {
