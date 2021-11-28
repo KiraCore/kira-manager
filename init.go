@@ -75,7 +75,7 @@ func InstallDocker() (err error) {
 	return err
 }
 
-//IDEA: Should try to use named pypes to wrap whiptail
+//IDEA: Should try to use named pipes to wrap whiptail
 /*
 
 func SetupNode(name string) (err error) {
@@ -105,7 +105,9 @@ func Menu() (choice string) {
 
 }
 func main() {
-	os.Setenv("TERM", "ansi")
+
+	os.Setenv("TERM", "ansi") //adding env var for whiptail(just in case)
+
 	switch input := Menu(); input {
 	case "1.":
 		fmt.Println("installing validator")
@@ -114,6 +116,9 @@ func main() {
 		}
 	case "2.":
 		fmt.Println("inslling sentry")
+		if err := InstallDocker(); err != nil {
+			log.Fatalln("Failed to install docker")
+		}
 	}
 
 }
