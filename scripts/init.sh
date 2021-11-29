@@ -30,7 +30,6 @@ checkEssentials () {
     read err
     if [[ $err != 0 ]]; then 
         whiptail --title "KM2.0 Setup" --msgbox "Installation of essentials faield..." 10 60
-        echo "${ESSENTIALS[$i]}">>log
         exit 1
     else whiptail --title 'KM2.0 Setup' --gauge "Installing essentials..." 6 50 0
     fi 
