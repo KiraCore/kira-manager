@@ -52,7 +52,7 @@ ESSENTIALS[2]="sudo -S <<< \"$PSWD\" tar -C /usr/local -xvf go$GO_VERSION.linux-
 ESSENTIALS[3]="sudo -S <<< \"$PSWD\" apt-get install git -y >> log"
 ESSENTIALS[4]="sudo -S <<< \"$PSWD\" apt-get install build-essential -y >> log"
 ESSENTIALS[5]="sudo -S <<< \"$PSWD\" git clone https://github.com/KiraCore/kira-manager.git"
-ESSENTIALS[6]="cd $HOME/tmp/kira-manager && sudo -S <<< \"$PSWD\" git checkout origin/feature/server && make"  
+ESSENTIALS[6]="cd $HOME/tmp/kira-manager && sudo -S <<< \"$PSWD\" git checkout origin/feature/server && sudo -S <<< \"$PSWD\" make"  
 
 ESSENTIALS_LEN=${#ESSENTIALS[@]}
 
