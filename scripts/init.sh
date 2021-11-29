@@ -25,8 +25,8 @@ installEssentials () {
         eval $(echo "${ESSENTIALS[$i]}") &>eval.log
         err=$?
         if [[ $err != 0 ]]; then 
-        whiptail --title "KM2.0 Setup" --msgbox "Installation of essentials faield..." 10 60
-        exit 1
+        whiptail --title "KM2.0 Setup" --msgbox "Installation of essentials faield..." 10 60;
+        exit 1;
         fi
     done
 }
