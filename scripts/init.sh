@@ -17,6 +17,15 @@ export GOBIN="${GOROOT}/bin"
 export GO="${GOBIN}/go"
 ARCHITECTURE=$(uname -m)
 
+checkEssentials () {
+if [[ $? != 0 ]]; then 
+whiptail --title "KM2.0 Setup" --msgbox "Installation of essentials faield..." 10 60
+echo "${ESSENTIALS[$i]}">>log
+exit 1
+else whiptail --title 'KM2.0 Setup' --gauge "Installing essentials..." 6 50 0
+fi 
+clear
+}
 
 if [[ "${ARCHITECTURE,,}" == *"arm"* ]] || [[ "${ARCHITECTURE,,}" == *"aarch"* ]] ; then
    export GOLANG_ARCH="arm64"
@@ -60,17 +69,9 @@ ESSENTIALS_LEN=${#ESSENTIALS[@]}
 
 { 
     for (( i=0; i<${ESSENTIALS_LEN}; i++ )) ; do
-
         COUNTER=$((100/$ESSENTIALS_LEN*$i)) 
         echo -e "XXX\n$COUNTER\n${ESSENTIALS_OPERATIONS[$i]}\nXXX"
         echo "${ESSENTIALS[$i]}" >> log 
         eval $(echo "${ESSENTIALS[$i]}") &>eval.log
 
-} | if [[ $? != 0 ]]; then
-            whiptail --title "KM2.0 Setup" --msgbox "Installation of essentials faield..." 10 60
-            echo "${ESSENTIALS[$i]}"
-            exit 1
-            else
-            whiptail --title 'KM2.0 Setup' --gauge "Installing essentials..." 6 50 0
-        fi 
-clear
+} | checkEssentials
