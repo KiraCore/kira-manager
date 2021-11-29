@@ -50,7 +50,7 @@ ESSENTIALS[1]="wget https://dl.google.com/go/go$GO_VERSION.linux-$GOLANG_ARCH.ta
 ESSENTIALS[2]="sudo -S <<< \"$PSWD\" tar -C /usr/local -xvf go$GO_VERSION.linux-$GOLANG_ARCH.tar.gz >> log"
 ESSENTIALS[3]="sudo -S <<< \"$PSWD\" apt-get install git -y >> log"
 ESSENTIALS[4]="sudo -S <<< \"$PSWD\" git clone https://github.com/KiraCore/kira-manager.git"
-ESSENTIALS[5]="sudo -S <<< \"$PSWD\" cd /home/$(logname)/tmp/kira-manager && sudo -S <<< \"$PSWD\" git checkout origin/feature/server && make"  
+ESSENTIALS[5]="sudo -S <<< \"$PSWD\" cd $HOME/tmp/kira-manager && sudo -S <<< \"$PSWD\" git checkout origin/feature/server && make"  
 
 ESSENTIALS_LEN=${#ESSENTIALS[@]}
 
