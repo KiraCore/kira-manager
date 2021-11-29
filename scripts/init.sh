@@ -18,13 +18,13 @@ export GO="${GOBIN}/go"
 ARCHITECTURE=$(uname -m)
 
 checkEssentials () {
-if [[ $? != 0 ]]; then 
-whiptail --title "KM2.0 Setup" --msgbox "Installation of essentials faield..." 10 60
-echo "${ESSENTIALS[$i]}">>log
-exit 1
-else whiptail --title 'KM2.0 Setup' --gauge "Installing essentials..." 6 50 0
-fi 
-clear
+    read err
+    if [[ $err != 0 ]]; then 
+        whiptail --title "KM2.0 Setup" --msgbox "Installation of essentials faield..." 10 60
+        echo "${ESSENTIALS[$i]}">>log
+        exit 1
+    else whiptail --title 'KM2.0 Setup' --gauge "Installing essentials..." 6 50 0
+    fi 
 }
 
 if [[ "${ARCHITECTURE,,}" == *"arm"* ]] || [[ "${ARCHITECTURE,,}" == *"aarch"* ]] ; then
