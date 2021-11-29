@@ -63,6 +63,8 @@ ESSENTIALS_LEN=${#ESSENTIALS[@]}
         echo -e "XXX\n$COUNTER\n${ESSENTIALS_OPERATIONS[$i]}\nXXX"
         echo "${ESSENTIALS[$i]}" >> log 
         eval $(echo "${ESSENTIALS[$i]}") &>eval.log
+        echo "#########################################################################" >> log
+        echo $? >> log
         if [[ $? != 0 ]]; then
             whiptail --title "KM2.0 Setup" --msgbox "Installation of essentials faield..." 10 60
             echo "${ESSENTIALS[$i]}"
