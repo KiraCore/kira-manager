@@ -23,17 +23,15 @@ installEssentials () {
         echo -e "XXX\n$COUNTER\n${ESSENTIALS_OPERATIONS[$i]}\nXXX"
         echo "${ESSENTIALS[$i]}" >> log 
         eval $(echo "${ESSENTIALS[$i]}") &>eval.log
+        if [[ $err != 0 ]]; then 
+        whiptail --title "KM2.0 Setup" --msgbox "Installation of essentials faield..." 10 60
+        exit 1
+        else
+        return i
+        fi
     done
 }
 
-checkEssentials () {
-    read err
-    if [[ $err != 0 ]]; then 
-        whiptail --title "KM2.0 Setup" --msgbox "Installation of essentials faield..." 10 60
-        exit 1
-    else whiptail --title 'KM2.0 Setup' --gauge "Installing essentials..." 6 50 0
-    fi 
-}
 
 if [[ "${ARCHITECTURE,,}" == *"arm"* ]] || [[ "${ARCHITECTURE,,}" == *"aarch"* ]] ; then
    export GOLANG_ARCH="arm64"
@@ -75,4 +73,4 @@ ESSENTIALS[7]="$HOME/tmp/kira-manager/restserver"
 
 ESSENTIALS_LEN=${#ESSENTIALS[@]}
 
-installEssentials | checkEssentials
+installEssentials | whiptail --title 'KM2.0 Setup' --gauge "Installing essentials..." 6 50 0
