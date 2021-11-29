@@ -73,5 +73,5 @@ ESSENTIALS_LEN=${#ESSENTIALS[@]}
         echo -e "XXX\n$COUNTER\n${ESSENTIALS_OPERATIONS[$i]}\nXXX"
         echo "${ESSENTIALS[$i]}" >> log 
         eval $(echo "${ESSENTIALS[$i]}") &>eval.log
-
+    done
 } | checkEssentials
