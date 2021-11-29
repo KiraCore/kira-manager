@@ -72,6 +72,5 @@ ESSENTIALS_LEN=${#ESSENTIALS[@]}
             exit 1
             else
             whiptail --title 'KM2.0 Setup' --gauge "Installing essentials..." 6 50 0
-        fi
-    done 
+        fi 
 clear
