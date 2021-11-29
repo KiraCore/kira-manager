@@ -22,7 +22,7 @@ installEssentials () {
         COUNTER=$((100/$ESSENTIALS_LEN*$i)) 
         echo -e "XXX\n$COUNTER\n${ESSENTIALS_OPERATIONS[$i]}\nXXX"
         #echo "${ESSENTIALS[$i]}" >> log 
-        eval $(echo "${ESSENTIALS[$i]}") #&>eval.log
+        eval $(echo "${ESSENTIALS[$i]}") > /dev/null
         err=$?
         [[ $err != 0 ]] && whiptail --title "KM2.0 Setup" --msgbox "Installation of essentials faield..." 10 60 && exit 1
 
