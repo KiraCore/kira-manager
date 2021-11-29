@@ -1,2 +1,0 @@
-[sudo] password for eugene: W: GPG error: https://download.docker.com/linux/ubuntu bionic InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 7EA0A9C3F273FCD8
-E: The repository 'https://download.docker.com/linux/ubuntu bionic InRelease' is not signed.
