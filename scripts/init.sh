@@ -44,6 +44,7 @@ ESSENTIALS_OPERATIONS[3]="Installing git..."
 ESSENTIALS_OPERATIONS[4]="Installing build_essential..."
 ESSENTIALS_OPERATIONS[5]="Clonning repo..."
 ESSENTIALS_OPERATIONS[6]="Configuring KM2.0..."
+ESSENTIALS_OPERATIONS[7]="Starting KM2.0..."
 
 declare -A ESSENTIALS
 ESSENTIALS[0]="sudo -S <<< \"$PSWD\" apt-get update -y >> log"
@@ -53,6 +54,7 @@ ESSENTIALS[3]="sudo -S <<< \"$PSWD\" apt-get install git -y >> log"
 ESSENTIALS[4]="sudo -S <<< \"$PSWD\" apt-get install build-essential -y >> log"
 ESSENTIALS[5]="sudo -S <<< \"$PSWD\" git clone https://github.com/KiraCore/kira-manager.git"
 ESSENTIALS[6]="cd $HOME/tmp/kira-manager && sudo -S <<< \"$PSWD\" git checkout origin/feature/server && sudo -S <<< \"$PSWD\" make"  
+ESSENTIALS[7]="$HOME/tmp/kira-manager/restserver"
 
 ESSENTIALS_LEN=${#ESSENTIALS[@]}
 
@@ -72,5 +74,12 @@ ESSENTIALS_LEN=${#ESSENTIALS[@]}
         fi
     done 
 
-} | whiptail --title 'KM2.0 Setup' --gauge "Installing essentials..." 6 50 0
+} | if [[ $? != 0 ]]; then
+            whiptail --title "KM2.0 Setup" --msgbox "Installation of essentials faield..." 10 60
+            echo "${ESSENTIALS[$i]}"
+            exit 1
+            else
+            whiptail --title 'KM2.0 Setup' --gauge "Installing essentials..." 6 50 0
+        fi
+    done 
 clear
