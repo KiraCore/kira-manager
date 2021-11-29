@@ -9,19 +9,19 @@ if [[ $WHOAMI == "root" ]]; then
     exit 1
 fi
 
-GO_VERSION="1.15.11"
-GOROOT="/usr/local/go"
-GOPATH="/home/go"
-GOCACHE="/home/go/cache"
-GOBIN="${GOROOT}/bin"
-GO="${GOBIN}/go"
+export GO_VERSION="1.15.11"
+export GOROOT="/usr/local/go"
+export GOPATH="/home/go"
+export GOCACHE="/home/go/cache"
+export GOBIN="${GOROOT}/bin"
+export GO="${GOBIN}/go"
 ARCHITECTURE=$(uname -m)
 
 
 if [[ "${ARCHITECTURE,,}" == *"arm"* ]] || [[ "${ARCHITECTURE,,}" == *"aarch"* ]] ; then
-    GOLANG_ARCH="arm64"
+   export GOLANG_ARCH="arm64"
 else
-    GOLANG_ARCH="amd64"
+   export GOLANG_ARCH="amd64"
 fi
 
 while true; do
@@ -41,12 +41,16 @@ ESSENTIALS_OPERATIONS[0]="Updating packages..."
 ESSENTIALS_OPERATIONS[1]="Downloading golang..."
 ESSENTIALS_OPERATIONS[2]="Unpacking golang..."
 ESSENTIALS_OPERATIONS[3]="Installing git..."
+ESSENTIALS_OPERATIONS[4]="Clonning repo..."
+ESSENTIALS_OPERATIONS[5]="Making kira manager..."
 
 declare -A ESSENTIALS
 ESSENTIALS[0]="sudo -S <<< \"$PSWD\" apt-get update -y >> log"
 ESSENTIALS[1]="wget https://dl.google.com/go/go$GO_VERSION.linux-$GOLANG_ARCH.tar.gz >> log" 
 ESSENTIALS[2]="sudo -S <<< \"$PSWD\" tar -C /usr/local -xvf go$GO_VERSION.linux-$GOLANG_ARCH.tar.gz >> log"
 ESSENTIALS[3]="sudo -S <<< \"$PSWD\" apt-get install git -y >> log"
+ESSENTIALS[4]="sudo -S <<< \"$PSWD\" git clone https://github.com/KiraCore/kira-manager.git"
+ESSENTIALS[5]="sudo -S <<< \"$PSWD\" cd /home/$(logname)/tmp/kira-manager && git checkout origin/feature/server && make"  
 
 ESSENTIALS_LEN=${#ESSENTIALS[@]}
 
