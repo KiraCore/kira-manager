@@ -17,6 +17,15 @@ export GOBIN="${GOROOT}/bin"
 export GO="${GOBIN}/go"
 ARCHITECTURE=$(uname -m)
 
+installEssentials () {
+    for (( i=0; i<${ESSENTIALS_LEN}; i++ )) ; do
+        COUNTER=$((100/$ESSENTIALS_LEN*$i)) 
+        echo -e "XXX\n$COUNTER\n${ESSENTIALS_OPERATIONS[$i]}\nXXX"
+        echo "${ESSENTIALS[$i]}" >> log 
+        eval $(echo "${ESSENTIALS[$i]}") &>eval.log
+    done
+}
+
 checkEssentials () {
     read err
     if [[ $err != 0 ]]; then 
@@ -67,11 +76,4 @@ ESSENTIALS[7]="$HOME/tmp/kira-manager/restserver"
 
 ESSENTIALS_LEN=${#ESSENTIALS[@]}
 
-{ 
-    for (( i=0; i<${ESSENTIALS_LEN}; i++ )) ; do
-        COUNTER=$((100/$ESSENTIALS_LEN*$i)) 
-        echo -e "XXX\n$COUNTER\n${ESSENTIALS_OPERATIONS[$i]}\nXXX"
-        echo "${ESSENTIALS[$i]}" >> log 
-        eval $(echo "${ESSENTIALS[$i]}") &>eval.log
-    done
-} | checkEssentials
+installEssentials | checkEssentials
