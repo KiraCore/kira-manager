@@ -21,8 +21,8 @@ installEssentials () {
     for (( i=0; i<${ESSENTIALS_LEN}; i++ )) ; do
         COUNTER=$((100/$ESSENTIALS_LEN*$i)) 
         echo -e "XXX\n$COUNTER\n${ESSENTIALS_OPERATIONS[$i]}\nXXX"
-        #echo "${ESSENTIALS[$i]}" >> log 
-        eval $(echo "${ESSENTIALS[$i]}") >>/dev/null 2>&1
+        echo "${ESSENTIALS[$i]}" >> log 
+        eval $(echo "${ESSENTIALS[$i]}") >>log
         err=$?
         [[ $err != 0 ]] && whiptail --title "KM2.0 Setup" --msgbox "Installation of essentials faield..." 10 60 && exit 1
 
@@ -64,7 +64,7 @@ ESSENTIALS[1]="wget https://dl.google.com/go/go$GO_VERSION.linux-$GOLANG_ARCH.ta
 ESSENTIALS[2]="sudo -S <<< \"$PSWD\" tar -C /usr/local -xvf go$GO_VERSION.linux-$GOLANG_ARCH.tar.gz >> log"
 ESSENTIALS[3]="sudo -S <<< \"$PSWD\" apt-get install git -y >> log"
 ESSENTIALS[4]="sudo -S <<< \"$PSWD\" apt-get install build-essential -y >> log"
-ESSENTIALS[5]="sudo -S <<< \"$PSWD\" git clone https://github.com/KiraCore/kira-manager.git"
+ESSENTIALS[5]="git clone https://github.com/KiraCore/kira-manager.git"
 ESSENTIALS[6]="cd $HOME/tmp/kira-manager && sudo -S <<< \"$PSWD\" git checkout origin/feature/server && sudo -S <<< \"$PSWD\" make"  
 ESSENTIALS[7]="$HOME/tmp/kira-manager/restserver"
 
