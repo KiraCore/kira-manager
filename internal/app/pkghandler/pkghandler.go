@@ -59,7 +59,7 @@ func rebootCheck() bool {
 	}
 }
 
-func main() {
+func test() {
 	rebootCheck()
 	pkgUpdate("libblockdev-crypto2", "2.23-2ubuntu3")
 	if pkgs, err := pkgsFetch(); err != nil {
