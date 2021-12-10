@@ -97,21 +97,3 @@ func Menu() (choice string) {
 	return errStr
 
 }
-func main() {
-
-	os.Setenv("TERM", "ansi") //adding env var for whiptail(just in case)
-
-	switch input := Menu(); input {
-	case "1.":
-		fmt.Println("installing validator")
-		if err := InstallDocker(); err != nil {
-			log.Fatalln("Failed to install docker")
-		}
-	case "2.":
-		fmt.Println("inslling sentry")
-		if err := InstallDocker(); err != nil {
-			log.Fatalln("Failed to install docker")
-		}
-	}
-
-}
