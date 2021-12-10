@@ -1,4 +1,4 @@
-package main
+package init
 
 import (
 	"bytes"
@@ -13,13 +13,6 @@ const (
 	KM_VERSION string = "KM2.0.0"
 )
 
-/*
-type Menu struct{
-}
-type Init struct {
-	*Menu
-}
-*/
 func CheckCmd(cmd_name string) bool {
 	if _, err := exec.LookPath(cmd_name); err != nil {
 		return false

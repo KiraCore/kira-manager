@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package init
 
 //pass arg?
 //use from diff namespace?
@@ -42,7 +40,3 @@ LimitNOFILE={{.NOFILE}}
 WantedBy={{.Wanted}}
 {{end}}
 `
-
-func main() {
-	fmt.Println("unit")
-}
