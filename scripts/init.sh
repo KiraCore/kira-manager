@@ -9,12 +9,12 @@ if [[ $WHOAMI == "root" ]]; then
     exit 1
 fi
 
-export GO_VERSION="1.15.11"
-export GOROOT="/usr/local/go"
-export GOPATH="/home/go"
-export GOCACHE="/home/go/cache"
-export GOBIN="${GOROOT}/bin"
-export GO="${GOBIN}/go"
+GO_VERSION="1.15.11"
+GOROOT="/usr/local/go"
+GOPATH="/home/go"
+GOCACHE="/home/go/cache"
+GOBIN="${GOROOT}/bin"
+GO="${GOBIN}/go"
 ARCHITECTURE=$(uname -m)
 
 installEssentials () {
@@ -37,10 +37,10 @@ fi
 
 while true; do
 PSWD="$(whiptail --title 'KM2.0 Setup' --passwordbox 'Enter your sudo password to continue installation.' 10 60 3>&1 1>&2 2>&3)"
-
 exitstatus=$?
 if [[ $exitstatus != 0 ]] || [[ -z $PSWD ]]; then
-    whiptail --title "KM2.0 Setup" --msgbox "Operation canceled" 10 60 
+    whiptail --title "KM2.0 Setup" --msgbox "Operation canceled" 10 60
+    exit 1 
 else
     whiptail --title "KM2.0 Setup" --msgbox "Success" 10 60
     break
