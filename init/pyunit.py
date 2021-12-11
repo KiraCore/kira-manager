@@ -1,8 +1,9 @@
 import sys
+import os
 from shutil import copyfile
 
-
-user=sys.argv[1]
+print(sys.argv)
+user=os.getlogin()
 
 UNIT ={
     "[Unit]":{"Description":"Restserver", "After":"network.target"},
@@ -17,8 +18,10 @@ def createUnit() -> None:
             for raw in v:
                 u.writelines([f"{raw}={v[raw]}\n"])
 
+
 def copyUnit():
     copyfile("restserver.service", "/etc/systemd/system/restserver.service" )
+
 
 def main():
     createUnit()

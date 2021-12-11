@@ -4,7 +4,7 @@ build:
 
 .PHONY: init
 init:			
-		python3 init/pyunit.py $(logname)
+		python3 init/pyunit.py
 
 .PHONY: test
 test:

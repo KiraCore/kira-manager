@@ -1,0 +1,16 @@
+[Unit]
+Description=Restserver
+After=network.target
+[Service]
+CPUQuota=100
+IOWeight=100%
+MemorySwapMax=
+Type=simple
+User=eugene
+WorkingDirectory=
+ExecStart=/usr/local/bin
+Restart=always
+RestartSec=5
+LimitNOFILE=4096
+[Install]
+WantedBy=default.target
