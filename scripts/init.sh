@@ -55,7 +55,8 @@ ESSENTIALS_OPERATIONS[3]="Installing git..."
 ESSENTIALS_OPERATIONS[4]="Installing build_essential..."
 ESSENTIALS_OPERATIONS[5]="Clonning repo..."
 ESSENTIALS_OPERATIONS[6]="Configuring KM2.0..."
-ESSENTIALS_OPERATIONS[7]="Starting KM2.0..."
+ESSENTIALS_OPERATIONS[7]="Creating symlink..."
+ESSENTIALS_OPERATIONS[8]="Starting KM2.0..."
 
 declare -A ESSENTIALS
 ESSENTIALS[0]="sudo -S <<< \"$PSWD\" apt-get update -y >> log"
@@ -64,8 +65,9 @@ ESSENTIALS[2]="sudo -S <<< \"$PSWD\" tar -C /usr/local -xvf go$GO_VERSION.linux-
 ESSENTIALS[3]="sudo -S <<< \"$PSWD\" apt-get install git -y >> log"
 ESSENTIALS[4]="sudo -S <<< \"$PSWD\" apt-get install build-essential -y >> log"
 ESSENTIALS[5]="git clone https://github.com/KiraCore/kira-manager.git >> log"
-ESSENTIALS[6]="cd $HOME/tmp/kira-manager && git checkout origin/feature/pkgcheck >> log && make >> log"  
-ESSENTIALS[7]="$HOME/tmp/kira-manager/restserver &"
+ESSENTIALS[6]="cd $HOME/tmp/kira-manager && git checkout origin/feature/pkgcheck >> log && make >> ../log"
+ESSENTIALS[7]="sudo -S <<< \"$PSWD\" cp restserver /usr/local/bin"
+ESSENTIALS[8]="restserver &"
 
 ESSENTIALS_LEN=${#ESSENTIALS[@]}
 
