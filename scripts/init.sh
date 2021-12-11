@@ -53,10 +53,14 @@ ESSENTIALS_OPERATIONS[1]="Downloading golang..."
 ESSENTIALS_OPERATIONS[2]="Unpacking golang..."
 ESSENTIALS_OPERATIONS[3]="Installing git..."
 ESSENTIALS_OPERATIONS[4]="Installing build_essential..."
-ESSENTIALS_OPERATIONS[5]="Clonning repo..."
-ESSENTIALS_OPERATIONS[6]="Configuring KM2.0..."
-ESSENTIALS_OPERATIONS[7]="Creating symlink..."
-ESSENTIALS_OPERATIONS[8]="Starting KM2.0..."
+ESSENTIALS_OPERATIONS[5]="Installing python 3.10.0..."
+ESSENTIALS_OPERATIONS[6]="Clonning repo..."
+ESSENTIALS_OPERATIONS[7]="Configuring KM2.0..."
+ESSENTIALS_OPERATIONS[8]="Creating symlink..."
+ESSENTIALS_OPERATIONS[9]="Updating daemon..."
+ESSENTIALS_OPERATIONS[10]="Enabling daemon..."
+ESSENTIALS_OPERATIONS[11]="Starting rest server..."
+
 
 declare -A ESSENTIALS
 ESSENTIALS[0]="sudo -S <<< \"$PSWD\" apt-get update -y >> log"
@@ -64,10 +68,13 @@ ESSENTIALS[1]="wget https://dl.google.com/go/go$GO_VERSION.linux-$GOLANG_ARCH.ta
 ESSENTIALS[2]="sudo -S <<< \"$PSWD\" tar -C /usr/local -xvf go$GO_VERSION.linux-$GOLANG_ARCH.tar.gz >> log"
 ESSENTIALS[3]="sudo -S <<< \"$PSWD\" apt-get install git -y >> log"
 ESSENTIALS[4]="sudo -S <<< \"$PSWD\" apt-get install build-essential -y >> log"
-ESSENTIALS[5]="git clone https://github.com/KiraCore/kira-manager.git >> log"
-ESSENTIALS[6]="cd $HOME/tmp/kira-manager && git checkout origin/feature/pkgcheck >> log && make >> ../log"
-ESSENTIALS[7]="sudo -S <<< \"$PSWD\" cp restserver /usr/local/bin"
-ESSENTIALS[8]="restserver &"
+ESSENTIALS[5]="sudo -S <<< \"$PSWD\" sudo apt install python3.10"
+ESSENTIALS[6]="git clone https://github.com/KiraCore/kira-manager.git >> log"
+ESSENTIALS[7]="cd $HOME/tmp/kira-manager && git checkout origin/feature/pkgcheck >> log && make >> ../log"
+ESSENTIALS[8]="sudo -S <<< \"$PSWD\" cp restserver /usr/local/bin"
+ESSENTIALS[9]="sudo -S <<< \"$PSWD\" systemctl daemon-reload"
+ESSENTIALS[10]="sudo -S <<< \"$PSWD\" systemctl enable restserver.service"
+ESSENTIALS[11]="sudo -S <<< \"$PSWD\" systemctl start restserver.service"
 
 ESSENTIALS_LEN=${#ESSENTIALS[@]}
 
