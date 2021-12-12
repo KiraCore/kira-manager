@@ -18,10 +18,8 @@ def createUnit() -> None:
             for raw in v:
                 u.writelines([f"{raw}={v[raw]}\n"])
 
-
-def copyUnit():
+def copyUnit() -> None:
     copyfile("restserver.service", "/etc/systemd/system/restserver.service" )
-
 
 def main():
     createUnit()

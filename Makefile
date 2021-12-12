@@ -3,7 +3,8 @@ build:
 		/usr/local/go/bin/go build -v ./cmd/restserver
 
 .PHONY: init
-init:			
+init:	
+		pip3 install -r requirements.txt		
 		python3 init/pyunit.py
 
 .PHONY: test
