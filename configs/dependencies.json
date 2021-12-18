@@ -1,15 +1,15 @@
 {
-    "version":"0.0.1",
-    "dependencies":{
-        "package_name1":{
+    "ver":"0.0.1",
+    "dependencies":[{
+        "package_name":{
             "ver":"1.1.1",
-            "installer":"apt|script|deb|rpm",
+            "installer":"apt",
             "path":"cwd"
         },
-        "package_name2":{
-            "ver":"1.1.1",
-            "installer":"apt|script|deb|rpm",
-            "path":"cwd"
+        "package_name":{
+            "ver":"1.1.2",
+            "installer":"script",
+            "path":"pwd"
         }
-    }
+    }]
 }
