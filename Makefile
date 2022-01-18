@@ -4,8 +4,8 @@ build:
 
 .PHONY: init
 init:	
-		pip3 install -r requirements.txt		
-		python3 init/pyunit.py
+		sudo pip3 install -r requirements.txt		
+		sudo python3 init/pyunit.py
 
 .PHONY: test
 test:
