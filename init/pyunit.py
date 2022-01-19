@@ -17,7 +17,6 @@ def createUnit() -> None:
             u.writelines([f"{k}\n"])
             for raw in v:
                 u.writelines([f"{raw}={v[raw]}\n"])
-
 def copyUnit() -> None:
     copyfile("restserver.service", "/etc/systemd/system/restserver.service" )
 
