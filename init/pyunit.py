@@ -7,7 +7,7 @@ user=os.getlogin()
 
 UNIT ={
     "[Unit]":{"Description":"Restserver", "After":"network.target"},
-    "[Service]":{"Type":"simple","User":user,"WorkingDirectory":"","ExecStart":"/usr/local/bin/restserver","Restart":"always","RestartSec":"5","LimitNOFILE":"4096"},
+    "[Service]":{"Type":"simple","User":user,"WorkingDirectory":f"/home/{user}/tmp/kira-manager","ExecStart":"/usr/local/bin/restserver","Restart":"always","RestartSec":"5","LimitNOFILE":"4096"},
     "[Install]":{"WantedBy":"default.target"}
 }
 
