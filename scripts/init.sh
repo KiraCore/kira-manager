@@ -3,6 +3,19 @@
 #To avoid password leakage
 export HISTIGNORE='*sudo -S*'
 
+#to start installation
+#mkdir -p $HOME/tmp && cd $HOME/tmp && bash <(wget -qO- https://raw.githubusercontent.com/KiraCore/kira-manager/feature/pkgcheck/scripts/init.sh -O ./i.sh)
+
+clear
+chmod 555 -v ./i.sh &>/dev/null
+H="$(sha256sum ./i.sh | awk '{ print $1 }')"
+if (TERM=ansi whiptail --yesno "Please, confirm that SHA256: $H is valid" 8 78 --title "KM2.0 Setup")
+then ./i.sh
+else clear
+echo "INFO: Setup was cancelled by the user."
+exit 1
+fi
+
 WHOAMI="$(whoami)"
 if [[ $WHOAMI == "root" ]]; then
     whiptail --title "KM2.0 Setup" --msgbox "Plesase create a sudo user first. You can't proceed as root." 10 60
