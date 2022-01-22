@@ -7,11 +7,17 @@ export HISTIGNORE='*sudo -S*'
 #mkdir -p $HOME/tmp && cd $HOME/tmp && bash <(wget -qO- https://raw.githubusercontent.com/KiraCore/kira-manager/feature/pkgcheck/scripts/init.sh -O ./i.sh)
 
 clear
+#Download the init script to check sha256
+
+mkdir -p $HOME/tmp && cd $HOME/tmp
+wget https://raw.githubusercontent.com/KiraCore/kira-manager/feature/pkgcheck/scripts/init.sh -O ./i.sh
 chmod 555 -v ./i.sh &>/dev/null
+
 H="$(sha256sum ./i.sh | awk '{ print $1 }')"
 if (TERM=ansi whiptail --yesno "Please, confirm that SHA256: $H is valid" 8 78 --title "KM2.0 Setup")
-then ./i.sh
-else clear
+echo "Passed"
+else 
+clear
 echo "INFO: Setup was cancelled by the user."
 exit 1
 fi
@@ -95,3 +101,4 @@ ESSENTIALS_LEN=${#ESSENTIALS[@]}
 
 installEssentials | whiptail --title 'KM2.0 Setup' --gauge "Installing essentials..." 6 50 0
 whiptail --title "KM2.0 Setup" --msgbox "Installation completed" 10 60 && clear
+exit 0
