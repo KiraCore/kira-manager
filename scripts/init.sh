@@ -14,12 +14,13 @@ wget https://raw.githubusercontent.com/KiraCore/kira-manager/feature/pkgcheck/sc
 chmod 555 -v ./i.sh &>/dev/null
 
 H="$(sha256sum ./i.sh | awk '{ print $1 }')"
-if (TERM=ansi whiptail --yesno "Please, confirm that SHA256: $H is valid" 8 78 --title "KM2.0 Setup")
-echo "Passed"
+
+if (TERM=ansi whiptail --yesno "Please, confirm that SHA256: $H is valid" 8 78 --title "KM2.0 Setup"); then
+    echo "Passed"
 else 
-clear
-echo "INFO: Setup was cancelled by the user."
-exit 1
+    clear
+    echo "INFO: Setup was cancelled by the user."
+    exit 1
 fi
 
 WHOAMI="$(whoami)"
