@@ -1,15 +1,21 @@
 {
-    "ver":"0.0.1",
-    "dependencies":[{
-        "package_name":{
-            "ver":"1.1.1",
-            "installer":"apt",
-            "path":"cwd"
+    "name": "KM2.0",
+    "version" : "v.0.0.1",
+    "description": "description",
+    "src" : "https://github.com/KiraCore/kira-manager.git",
+    "dependencies" : [
+        {
+            "name": "docker",
+            "version": "19.03.08",
+            "type":"script",
+            "url": "path to script"
         },
-        "package_name":{
-            "ver":"1.1.2",
-            "installer":"script",
-            "path":"pwd"
+        {
+            "name": "kvm",
+            "version": "4.2.1",
+            "type":"apt",
+            "cmd": "apt update && apt install kvm"
         }
-    }]
+    ]
+
 }

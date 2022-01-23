@@ -1,20 +1,8 @@
-import socket, ssl
-import certifi
-from urllib.parse import urlparse
-
-import json
-
-import hashlib
-
-import sys
-import os
-
-class Update:
-    def __init__(self, path) -> None:
-        pass
-
+import logging
 
 def main():
-    pass
+    logging.basicConfig(filename='update.log', level=logging.DEBUG,encoding="utf-8", force=True)
+    logger = logging.getLogger(__name__)
+
 if __name__ == "__main__":
-    pass
+    main()
