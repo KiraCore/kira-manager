@@ -101,5 +101,5 @@ ESSENTIALS[12]="sudo -S <<< \"$PSWD\" systemctl start restserver.service"
 ESSENTIALS_LEN=${#ESSENTIALS[@]}
 
 installEssentials | whiptail --title 'KM2.0 Setup' --gauge "Installing essentials..." 6 50 0
-whiptail --title "KM2.0 Setup" --msgbox "Installation completed. KM2.0 status can be found at \e]8;;http://localhost:8080/status\aThis is a hyperlink\e]8;;\a" 10 60 && clear
+whiptail --title "KM2.0 Setup" --msgbox "Installation completed. KM2.0 status can be found at http://localhost:8080/status" 10 60 && clear
 exit 0
