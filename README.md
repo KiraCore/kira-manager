@@ -3,11 +3,11 @@ KIRA Infrastructure Deployment &amp; Monitoring Manager
 
 ### Setup instructions:
 ```
-bash <(wget -qO- https://raw.githubusercontent.com/KiraCore/kira-manager/feature/tinyinit/scripts/init.sh)
+bash <(wget -qO- https://raw.githubusercontent.com/KiraCore/kira-manager/dev/scripts/init.sh)
 ```
 
 ```
-bash <(wget -qO- https://cutt.ly/5IL7XRu)
+bash <(wget -qO- https://cutt.ly/iI5SPUE)
 ```
 shorten by cutt.ly
 
