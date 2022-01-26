@@ -1,20 +1,30 @@
 {
     "name": "KM2.0",
     "version" : "v.0.0.1",
-    "description": "description",
+    "description": "JSON includes all packages and instructions how to install them",
     "src" : "https://github.com/KiraCore/kira-manager.git",
     "dependencies" : [
         {
             "name": "docker",
-            "version": "19.03.08",
+            "version": "19.03",
             "type":"script",
-            "url": "path to script"
+            "url": "https://get.docker.com/",
+            "shell": "sh",
+            "sequence" : 0
         },
         {
             "name": "kvm",
             "version": "4.2.1",
             "type":"apt",
-            "cmd": "apt update && apt install kvm"
+            "cmd": "apt update && apt install kvm",
+            "sequence" : 1
+        },
+        {
+            "name": "Git repo",
+            "version" : "v.0.0.1",
+            "type" : "git",
+            "repoURL": "github.com/organization/repo.git",
+            "sequence" : 2
         }
     ]
 
