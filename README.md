@@ -7,7 +7,6 @@ bash <(wget -qO- https://raw.githubusercontent.com/KiraCore/kira-manager/dev/scr
 ```
 
 ```
-bash <(wget -qO- https://cutt.ly/iI5SPUE)
 ```
 shorten by cutt.ly
 
