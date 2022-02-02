@@ -1,0 +1,6 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: kira-manager
+Source: https://github.com/KiraCore/kira-manager
+Files: *
+Copyright: 2018 Asmodat
+License: GNU Affero General Public License v3.0

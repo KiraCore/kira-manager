@@ -1,13 +1,10 @@
-Source: kira-mngr
-Section: unknown
+Source: km2
+Section: devel
 Priority: optional
-Maintainer: Yevhen Yakubovkiy <yaievgeniy@dgmail.com>
-Build-Depends: debhelper (>=10)
-Standards-Version: 4.6.0
-Homepage: <insert the upstream URL, if relevant>
-Package: kira-mngr
+Maintainer: Yevhen Yakubosvskiy yaievgeniy@gmail.com
+Build-Depends: build-essential, python3, python3-pip
+
+Package: km2
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
-#<insert long description, indented with spaces>
-#https://www.debian.org/doc/manuals/maint-guide/dreq.en.html#control
+Description: The infrastructure manger for KiraCore
